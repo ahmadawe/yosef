@@ -1,0 +1,134 @@
+:root{
+  --bg: #ffffff;
+  --text: #333333;
+  --muted: #666666;
+  --primary: #4CAF50;
+  --primary-contrast: #ffffff;
+  --card: #ffffff;
+  --section-bg: #F9F9F9;
+  --header-bg: rgba(255,255,255,0.6);
+  --shadow: 0 6px 18px rgba(16,24,40,0.08);
+  --radius: 12px;
+  --glass: 8px;
+}
+
+html{box-sizing:border-box;scroll-behavior:smooth;font-family: 'Poppins', 'Montserrat', system-ui, sans-serif}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);line-height:1.6}
+
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* Header */
+.site-header{position:fixed;left:0;right:0;top:0;z-index:80;background:var(--header-bg);backdrop-filter: blur(6px);box-shadow:var(--shadow)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-weight:700;color:var(--text);text-decoration:none;font-size:20px}
+.nav{display:flex;align-items:center;gap:14px}
+.nav a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:8px;transition:background .2s,color .2s}
+.nav a:hover{background:rgba(0,0,0,0.04)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;padding:0 18px;height:44px;cursor:pointer;text-decoration:none;font-weight:600}
+.btn-primary{background:var(--primary);color:var(--primary-contrast)}
+.btn-cta{background:var(--primary);color:var(--primary-contrast);border-radius:24px;padding:0 22px;height:48px}
+.btn-outline{background:transparent;border:1px solid rgba(0,0,0,0.08);color:var(--text)}
+.btn-sm{height:40px;padding:0 14px;border-radius:10px}
+.btn-icon{background:transparent;border:0;font-size:18px;padding:8px}
+.mobile-only{display:none}
+
+/* Hero */
+.hero{min-height:76vh;display:flex;align-items:center;position:relative;background-image:linear-gradient(rgba(0,0,0,0.22),rgba(0,0,0,0.36)),url('img/hero1.jpg');background-size:cover;background-position:center;color:#fff}
+.hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.35),rgba(0,0,0,0.45))}
+.hero-content{position:relative;z-index:2;padding:80px 0}
+.hero h1{font-size:36px;margin:0 0 12px;font-weight:700}
+.lead{font-size:18px;margin-bottom:18px;color:rgba(255,255,255,0.9)}
+.hero-actions .btn{margin-right:12px}
+
+/* Make the hero outline button more visible on light backgrounds: thicker white border and white text */
+.hero .btn-outline{border:2px solid rgba(255,255,255,0.95);color:#fff}
+.hero .btn-outline:hover{background:rgba(255,255,255,0.06);color:#fff}
+
+/* Sections */
+.section{padding:70px 0}
+.section-title{font-size:28px;margin:0 0 18px}
+
+/* Services */
+.services{background:var(--section-bg)}
+.cards{display:grid;gap:20px;grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);padding:20px;border-radius:12px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;gap:10px}
+.card .icon{font-size:28px}
+.card-media{display:block;overflow:hidden;border-radius:10px;margin-bottom:12px}
+.card-media img{width:100%;height:160px;object-fit:cover;display:block}
+
+/* ensure card image contrast in dark mode */
+[data-theme="dark"] .card-media{box-shadow:inset 0 0 0 1000px rgba(0,0,0,0.04)}
+.card:hover{transform:translateY(-8px);box-shadow:0 14px 36px rgba(16,24,40,0.12)}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.about-image img{width:100%;border-radius:12px;display:block}
+
+/* Testimonials */
+.testimonials .slider{position:relative;overflow:hidden}
+.slide{display:none;padding:18px;background:var(--card);border-radius:12px;box-shadow:var(--shadow)}
+.slide.active{display:block}
+.client{display:flex;align-items:center;gap:10px;margin-top:12px}
+.client img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 320px;gap:28px}
+.contact-form form{display:flex;flex-direction:column;gap:12px}
+.contact-form label{display:flex;flex-direction:column;font-size:14px;color:var(--muted)}
+.contact-form input,.contact-form textarea{padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);font-size:15px}
+.contact-info{background:var(--section-bg);padding:18px;border-radius:10px}
+  .socials a:not(.btn){display:inline-block;margin:6px 8px;color:var(--primary)}
+.form-msg{margin-top:8px;color:var(--muted);font-size:14px}
+
+/* Footer */
+.site-footer{padding:20px 0;background:#0f0f0f;color:#ddd}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+.footer-nav a{color:#ccc;text-decoration:none;margin-left:12px}
+
+/* Responsive */
+@media (max-width:1000px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .header-inner{height:60px}
+  .hero{min-height:60vh}
+  .hero h1{font-size:28px}
+  .section-title{font-size:22px}
+  .cards{grid-template-columns:1fr}
+  .mobile-only{display:inline-block}
+  .nav a{display:none}
+  .nav .btn-icon{display:inline-flex}
+  body.nav-open .nav a{display:inline-block;background:transparent;padding:12px 16px}
+  body.nav-open .nav{position:fixed;inset:60px 0 0 0;flex-direction:column;background:var(--bg);padding:18px;gap:6px;overflow:auto}
+}
+
+/* Typography scaling */
+@media (min-width:1201px){
+  .hero h1{font-size:42px}
+  html{font-size:16px}
+}
+@media (min-width:769px) and (max-width:1200px){
+  .hero h1{font-size:36px}
+  html{font-size:15px}
+}
+@media (max-width:768px){
+  .hero h1{font-size:24px}
+  html{font-size:14px}
+}
+
+/* Dark theme */
+[data-theme="dark"]{
+  --bg:#121212;--text:#EEEEEE;--muted:#CCCCCC;--primary:#81C784;--primary-contrast:#1b1b1b;--card:#2A2A2A;--section-bg:#1E1E1E;--header-bg:rgba(18,18,18,0.9);--shadow:0 8px 26px rgba(0,0,0,0.6)
+}
+
+/* small helpers */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* Icon accents: ensure visibility in dark mode */
+.btn-icon{color:var(--text);transition:color .18s}
+#dark-toggle{color:var(--primary);font-weight:700}
+.card .icon{font-size:30px;color:var(--primary);display:inline-flex;align-items:center;justify-content:center}
+
